@@ -1,4 +1,4 @@
-# test
+# my_terminal
 
 ## Project setup
 ```
