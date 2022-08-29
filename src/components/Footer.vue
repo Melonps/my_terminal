@@ -12,7 +12,6 @@
     <div id="menu">
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <router-link to="/top">Top</router-link>
     </div>
   </div>
 </template>
