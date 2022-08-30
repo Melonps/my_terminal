@@ -1,7 +1,6 @@
 <template>
     <div id="clock">
-        <button id="btn1" v-on:click="countUp" class="ui teal button">実行</button>
-        <p>{{ count }}</p>
+        <p>{{ clock }}</p>
     </div>
 </template>
 
@@ -9,13 +8,26 @@
 export default {
     data: function () {
         return {
-            count: 0
+            clock:"00:00:00"
         }
     },
+    created() {
+        this.tick();
+    },
     methods: {
-        countUp: function() {
+        tick: function() {
             // dataオプションで定義したcuontにアクセス
-            return this.count++
+            const date = new Date();  // Dateオブジェクトを作る
+			let h = date.getHours();  // 時
+			let m = date.getMinutes();// 分
+
+            if(h < 10) h = "0" + h;   // 10未満であれば頭に0を付ける
+			if(m < 10) m = "0" + m;
+            this.clock = h + ":" + m;
+            
+            setTimeout(() => {
+                this.countUp();
+            }, 1000);
         } 
     }
 }
