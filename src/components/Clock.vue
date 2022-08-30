@@ -18,15 +18,15 @@ export default {
         tick: function() {
             // dataオプションで定義したcuontにアクセス
             const date = new Date();  // Dateオブジェクトを作る
-			let h = date.getHours();  // 時
-			let m = date.getMinutes();// 分
+			let hour = date.getHours();  // 時
+			let mintutes = date.getMinutes();// 分
 
-            if(h < 10) h = "0" + h;   // 10未満であれば頭に0を付ける
-			if(m < 10) m = "0" + m;
-            this.clock = h + ":" + m;
+            if(hour < 10) hour = "0" + hour;   // 10未満であれば頭に0を付ける
+			if(mintutes < 10) mintutes = "0" + mintutes;
+            this.clock = hour + ":" + mintutes;
             
             setTimeout(() => {
-                this.countUp();
+                this.tick();
             }, 1000);
         } 
     }
