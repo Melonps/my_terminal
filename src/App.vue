@@ -1,16 +1,20 @@
 <template>
   <Header />
   <router-view />
+  <Username></Username>
   <Footer />
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Username from "@/components/Username.vue";
+
 export default {
   components: {
     Header,
     Footer,
+    Username,
   },
 };
 </script>
