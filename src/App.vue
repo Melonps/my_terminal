@@ -1,20 +1,20 @@
 <template>
   <Header />
   <router-view />
-  <Username></Username>
+  <Usersetting></Usersetting>
   <Footer />
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import Username from "@/components/Username.vue";
+import Usersetting from "@/components/Usersetting.vue";
 
 export default {
   components: {
     Header,
     Footer,
-    Username,
+    Usersetting,
   },
 };
 </script>
