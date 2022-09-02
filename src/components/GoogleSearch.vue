@@ -1,13 +1,21 @@
 <template>
-    <div id="gsearch">
-        <input ref="input"
-            title="Site Search"
+    <form class="form-inline">
+        <div class="form-group">
+            <input ref="input"
+            title="Google Search"
             v-on:keyup.enter = "search(textInput)"
-            v-model = "textInput" />
-        <button @click="search(textInput)">
-            Search
-        </button>
-    </div>
+            v-model = "textInput"
+            type="text"
+            class="form-control"
+            id="inputSearch"
+            aria-describedby="google-search"
+            placeholder="Google Search"
+            >
+            <button type="button" class="btn btn-primary" v-on:click="search(textInput)">
+                Search
+            </button>
+        </div>
+    </form>
 </template>
 
 <script>
