@@ -10,7 +10,7 @@ let url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json";
 export default ({
     data: function () {
         return {
-            data:"",
+            data:"test",
         }
     },
     created() {
@@ -19,13 +19,11 @@ export default ({
     methods: {
         weather_api: function () {
             fetch(url) 
-                .then(function(response) {
+                .then((response) =>{
                     return response.json();
                 })
-                .then(function(weather) {
-                    console.log(weather);
-                    console.log(weather[0]);
-                    this.data = weather[0].timeSeries[0];
+                .then((weather) => {
+                    this.data = weather[0];
                 });
         }
     }
