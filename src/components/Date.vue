@@ -1,7 +1,7 @@
 <template>
     <div id="date">
-        <p>{{ day }}</p>
         <p>{{month}}</p>
+        <p>{{ day }}</p>
         <p>{{dayOfWeek}}</p>
     </div>
 </template>
@@ -10,8 +10,8 @@
 export default {
     data: function () {
         return {
+            month: "January",
             day: "00",
-            month: "00",
             dayOfWeek:"Sunday",
         }
     },
@@ -23,11 +23,12 @@ export default {
             // dataオプションで定義したcuontにアクセス
             const date = new Date();  // Dateオブジェクトを作る
             const month = date.getMonth();
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month]
             const day = date.getDate();
             const dayOfWeek = date.getDay();
-            const dayOfWeek_Str = [ "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATERDAY" ][dayOfWeek] ;
+            const dayOfWeek_Str = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ][dayOfWeek] ;
             this.day = day;  // 日付
-            this.month = month+1;
+            this.month = months;
             this.dayOfWeek = dayOfWeek_Str;
 
         } 
