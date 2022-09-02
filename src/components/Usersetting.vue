@@ -1,22 +1,10 @@
 <template>
-    <!--
-    <v-container>
-        <table>
-            <tr v-for="(value,key) in datas" :key="key">
-                <td> {{ key }} </td>
-                <td> {{ value}} </td>
-                <td> {{ value[0]}} </td>
-            </tr>
-        </table>
-    
-    </v-container>
-    -->
     <div v-for="(value, key) in datas" :key="key">
         <p> {{value}} </p>
     </div>
     
     <div>
-        <img :src="image_link"/>
+        <img :src="require(`@/assets/img/${image_name}.jpg`)"/>
         <p>{{datas}}</p>
     </div>
 </template>
@@ -28,7 +16,7 @@
         data() {
             return {
                 datas: userdata,
-                image_link:userdata.background_image
+                image_name:userdata.background_image
             };
         }
     };
