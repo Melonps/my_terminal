@@ -1,0 +1,17 @@
+{
+    "Groups":
+        {
+            "group1" :[
+                {
+                    "name": "twitter",
+                    "url" : "https://twitter.com/home"
+                },
+                {
+                    "name": "youtube",
+                    "url" : "https://www.youtube.com/"
+                }
+
+            ]
+        }
+    
+}
