@@ -1,6 +1,9 @@
 <template>
     <div id="weather">
         <p>{{ data }}</p>
+        <p>{{ area }}</p>
+        <p>{{ code }}</p>
+        <img src="https://www.jma.go.jp/bosai/forecast/img/200.svg" />
     </div>
 </template>
 
@@ -11,6 +14,8 @@ export default ({
     data: function () {
         return {
             data:"",
+            area:"",
+            code:"",
         }
     },
     created() {
@@ -19,16 +24,15 @@ export default ({
     methods: {
         weather_api: function () {
             fetch(url) 
-                .then(function(response) {
+                .then(response => {
                     return response.json();
                 })
-                .then(function(weather) {
-                    console.log(weather);
-                    console.log(weather[0]);
-                    this.data = weather[0].timeSeries[0];
+                .then(weather => {
+                    // this.data = weather[0]
+                    this.area = weather[0].timeSeries[0].areas[0].area.name;
+                    this.code = weather[0].timeSeries[0].areas[0].weatherCodes[0];
                 });
         }
     }
-    
 })
 </script>
