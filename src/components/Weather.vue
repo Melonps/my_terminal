@@ -13,7 +13,7 @@ let url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json";
 export default ({
     data: function () {
         return {
-            data:"test",
+            data:"",
             area:"",
             code:"",
         }
@@ -28,7 +28,9 @@ export default ({
                     return response.json();
                 })
                 .then((weather) => {
-                    this.data = weather[0];
+                    // this.data = weather[0];
+                    this.area = weather[0].timeSeries[0].areas[0].area.name;
+                    this.code = weather[0].timeSeries[0].areas[0].weatherCodes[0];
                 });
         }
     }
