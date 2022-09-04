@@ -2,9 +2,9 @@
   <div class="about">
     <h1>abouts</h1>
     <h1>Sign in with Google</h1>
-    <SignOut></SignOut>
-    <h1>Sign out</h1>
     <SignInWithGoogle></SignInWithGoogle>
+    <h1>Sign out</h1>
+    <SignOut></SignOut>
   </div>
 </template>
 <script>
