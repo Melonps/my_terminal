@@ -1,5 +1,8 @@
 <template>
-  <button type="submit" class="btn btn-primary" v-on:click="google">Sign in with Google</button>
+  <button type="submit" class="btn btn-primary" v-on:click="google">
+    <span><font-awesome-icon icon="fa-brands fa-google" /></span>
+    Sign in with Google
+  </button>
 </template>
 
 <script>
@@ -9,6 +12,9 @@
   const auth = getAuth();
 
   export default {
+    data: () => ({
+      userName: '',
+    }),
     methods: {
       google() {
         signInWithPopup(auth, provider)
@@ -18,6 +24,7 @@
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
+            this.userName = user.displayName
             // ...
             console.log(token)
             console.log(user)
