@@ -30,7 +30,8 @@ import { firebaseConfig } from './config/firebase-config'
 const app = initializeApp(firebaseConfig)
 
 // Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+const db = getFirestore(app);
+export default db;
 
 createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)
