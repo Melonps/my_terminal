@@ -19,6 +19,14 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 /* add icons to the library */
 library.add(fas, fab, far)
 
+/* Firebase */
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import { firebaseConfig } from './config/firebase-config'
+initializeApp(firebaseConfig)
+
 createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)
     .use(router)

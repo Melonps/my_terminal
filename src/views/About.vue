@@ -1,6 +1,25 @@
 <template>
   <div class="about">
     <h1>abouts</h1>
-    <button type="button" class="btn btn-primary">Primary</button>
+    <h1>Sign up</h1>
+    <AuthEmailRegister></AuthEmailRegister>
+    <h1>Sign in</h1>
+    <AuthEmailSignIn></AuthEmailSignIn>
+    <h1>Sign out</h1>
+    <AuthSignOut></AuthSignOut>
   </div>
 </template>
+<script>
+  import AuthEmailRegister from "@/components/AuthEmailRegister.vue";
+  import AuthEmailSignIn from "../components/AuthEmailSignIn.vue";
+  import AuthSignOut from "../components/AuthSignOut.vue";
+
+  export default {
+    name: "about",
+    components: {
+      AuthEmailRegister,
+      AuthEmailSignIn,
+      AuthSignOut
+    },
+  };
+</script>
