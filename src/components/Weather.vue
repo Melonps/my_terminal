@@ -3,19 +3,22 @@
         <p>{{ data }}</p>
         <p>{{ area }}</p>
         <p>{{ code }}</p>
-        <img src="https://www.jma.go.jp/bosai/forecast/img/200.svg" />
+        <p>{{ weather_code }}</p>
+        <img :src="require(`@/assets/weather_img/${weather_code}`)"/>
     </div>
 </template>
 
 <script>
+import weather_code from '../assets/weather_code.json'
 let url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json";
 
 export default ({
     data: function () {
         return {
-            data:"",
-            area:"",
-            code:"",
+            data: "",
+            area: "",
+            code: "",
+            weather_code: weather_code,
         }
     },
     created() {
@@ -31,6 +34,7 @@ export default ({
                     // this.data = weather[0];
                     this.area = weather[0].timeSeries[0].areas[0].area.name;
                     this.code = weather[0].timeSeries[0].areas[0].weatherCodes[0];
+                    this.weather_code = weather_code[String(this.code)][1]
                 });
         }
     }
