@@ -25,7 +25,7 @@
     import db from './../main'
     
     export default {
-        created: function() {
+        mounted: function() {
             const auth = getAuth();
             const user = auth.currentUser;
 
@@ -34,13 +34,11 @@
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 this.uid = user.uid
                 console.log(this.uid)
+                this.fetchUserSettings(this.uid);
             } else {
                 // No user is signed in.
                 alert("No user is signed in.")
             }
-        },
-        mounted: function() {
-            this.fetchUserSettings(this.uid);
         },
         data: () => ({
             uid: "sample",

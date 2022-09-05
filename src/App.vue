@@ -1,20 +1,17 @@
 <template>
   <Header />
   <router-view />
-  <UserSettings></UserSettings>
   <Footer />
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import UserSettings from "@/components/UserSettings.vue";
 
 export default {
   components: {
     Header,
     Footer,
-    UserSettings,
   },
 };
 </script>
