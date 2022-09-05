@@ -10,7 +10,7 @@
 <script>
   import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
   import { doc, getDoc, setDoc } from "firebase/firestore";
-  import { db } from './../main'
+  import { db } from './../plugins/firebase'
 
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
