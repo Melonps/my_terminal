@@ -18,7 +18,7 @@
   /* Firestoreの練習用スクリプト */
 
   // Firestoreに必要なモジュールを読み込み
-  import db from './../main'
+  import { db } from './../main'
   import { collection, doc, addDoc, getDoc } from "firebase/firestore";
 
   // 追加するデータ
