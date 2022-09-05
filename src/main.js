@@ -1,6 +1,7 @@
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 import App from './App.vue';
 import router from "./router";
+import store from "./store"
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -33,7 +34,9 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app);
 export default db;
 
+
 createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)
     .use(router)
+    .use(store)
     .mount("#app");
