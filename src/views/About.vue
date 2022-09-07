@@ -27,7 +27,7 @@ export default {
   components: {
     SignInWithGoogle,
     SignOut,
-    Firestore
+    Firestore,
     Clock,
     Date,
   },
