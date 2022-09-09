@@ -22,7 +22,8 @@
 <script>
     import { getAuth } from "firebase/auth";
     import { doc, getDoc, updateDoc } from "firebase/firestore";
-    import db from './../main'
+    import { db } from "../plugins/firebase";
+
     
     export default {
         mounted: function() {
