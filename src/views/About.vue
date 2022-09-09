@@ -2,10 +2,17 @@
   <div class="about">
     <h1>abouts</h1>
     <h1>Firebase Authentication</h1>
-    <h2>Sign in with Google</h2>
-    <SignInWithGoogle></SignInWithGoogle>
-    <h2>Sign out</h2>
-    <SignOut></SignOut>
+
+    <div v-if="!signedin_state">
+      <h2>Sign in with Google</h2>
+      <SignInWithGoogle></SignInWithGoogle>
+    </div>
+
+    <div v-if="signedin_state">
+      <h2>Sign out</h2>
+      <SignOut></SignOut>
+    </div>
+
     <h1>Firebase Firestore</h1>
     <Firestore></Firestore>
     <Clock></Clock>
@@ -31,5 +38,10 @@ export default {
     Clock,
     Date,
   },
+  computed: {
+    signedin_state() {
+      return this.$store.state.isSignedIn
+    },
+  }
 };
 </script>
