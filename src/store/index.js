@@ -6,29 +6,29 @@ import { auth } from "../plugins/firebase";
 export default createStore({
     state: {
         isSignedIn: false,
-        userID:"",
+        uid: "",
     },
     mutations: {
-        updateSignInState(isSignedIn) {
-            this.state.isSignedIn = isSignedIn
+        updateSignInState (state, isSignedIn) {
+            state.isSignedIn = isSignedIn
         },
-        updateUserID(userID) {
-            this.state.userID = userID
+        updateUserID (state, uid) {
+            state.uid = uid
         },
     },
     actions: {
-        onAuth() {
+        onAuth (context) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     // User is signed in, see docs for a list of available properties
                     // https://firebase.google.com/docs/reference/js/firebase.User
                     const uid = user.uid;
-                    this.$store.commit('updateSignInState', true)
-                    this.$store.commit('updateUserID', uid)
+                    context.commit('updateSignInState', true)
+                    context.commit('updateUserID', uid)
                 } else {
                     // User is signed out
-                    this.$store.commit('updateSignInState', false)
-                    this.$store.commit('updateUserID', "")
+                    context.commit('updateSignInState', false)
+                    context.commit('updateUserID', "")
                 }
             });
         },
