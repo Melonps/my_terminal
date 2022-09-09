@@ -4,8 +4,7 @@
 
 <script>
   import { getAuth, signOut } from "firebase/auth";
-
-  const auth = getAuth();
+  import { auth } from './../plugins/firebase'
 
   export default {
     methods: {
