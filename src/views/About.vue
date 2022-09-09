@@ -28,7 +28,6 @@ import Firestore from "../components/Firestore.vue";
 import Clock from "@/components/Clock.vue";
 import Date from "@/components/Date.vue";
 
-
 export default {
   name: "about",
   components: {
@@ -37,6 +36,9 @@ export default {
     Firestore,
     Clock,
     Date,
+  },
+  created() {
+    this.$store.dispatch('onAuth')
   },
   computed: {
     signedin_state() {
