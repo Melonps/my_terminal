@@ -3,9 +3,8 @@
 </template>
 
 <script>
-  import { getAuth, signOut } from "firebase/auth";
-
-  const auth = getAuth();
+  import { signOut } from "firebase/auth";
+  import { auth } from './../plugins/firebase'
 
   export default {
     methods: {
