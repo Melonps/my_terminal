@@ -40,7 +40,7 @@ export default {
     Date,
   },
   created() {
-    this.$store.dispatch('onAuth')
+    this.$store.commit('onAuth')
   },
   computed: {
     signedin_state() {

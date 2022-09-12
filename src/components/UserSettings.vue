@@ -1,17 +1,22 @@
 <template>
     <div>
-        <img :src="require(`@/assets/img/${userSettings.bg_image}.jpg`)"/>
-        <p>{{userSettings}}</p>
+        <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg"/>
+        <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
+        <p>{{userSettingsState}}</p>
     </div>
+    <h2>Update JSON</h2>
     <form>
-        <h2>Update JSON</h2>
         <div class="mb-3">
             <label for="inputUserName" class="form-label">User Name</label>
-            <input v-model="userSettings.username" type="text" class="form-control" id="inputUserName">
+            <input v-model="userSettings.username" v-bind:placeholder="userSettingsState.username" type="text" class="form-control" id="inputUserName">
         </div>
         <div class="mb-3">
             <label for="inputUserLocation" class="form-label">Location</label>
-            <input v-model="userSettings.location" type="text" class="form-control" id="inputUserLocation">
+            <input v-model="userSettings.location" v-bind:placeholder="userSettingsState.location" type="text" class="form-control" id="inputUserLocation">
+        </div>
+        <div class="mb-3">
+            <label for="imputBgImage" class="form-label">Background Image</label>
+            <input v-model="userSettings.bg_image" v-bind:placeholder="userSettingsState.bg_image" type="url" class="form-control" id="imputBgImage">
         </div>
         <button type="button" class="btn btn-primary" v-on:click="updateUserSettings">
             Update
@@ -20,58 +25,44 @@
 </template>
 
 <script>
-    import { getAuth } from "firebase/auth";
-    import { doc, getDoc, updateDoc } from "firebase/firestore";
+    import { doc, updateDoc } from "firebase/firestore";
     import { db } from "../plugins/firebase";
 
-    
     export default {
-        mounted: function() {
-            const auth = getAuth();
-            const user = auth.currentUser;
-
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                this.uid = user.uid
-                console.log(this.uid)
-                this.fetchUserSettings(this.uid);
-            } else {
-                // No user is signed in.
-                alert("No user is signed in.")
-            }
-        },
         data: () => ({
-            uid: "sample",
             userSettings: {
-                username: 'hoge',
-                location: 'Osaka',
-                bg_image: 'default',
+                username: '',
+                location: '',
+                bg_image: '',
             },
         }),
-        methods: {
-            fetchUserSettings: async function() {
-                const docRef = doc(db, "users", this.uid);
-                const docSnap = await getDoc(docRef);
-                
-                if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
-                    const data = docSnap.data();
-                    if (data["user_settings"]) {
-                        this.userSettings = data["user_settings"];
-                    }
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                    alert("Failed to find user settings document.");
-                }
+
+        computed: {
+            userSettingsState: function () {
+                return this.$store.state.userSettings;
             },
+            uidState: function () {
+                return this.$store.state.uid;
+            }
+        },
+
+        watch: {
+            uidState () {
+                this.$nextTick(() => {
+                    this.$store.dispatch('fetchUserSettings')
+                })
+            }
+        },
+
+        methods: {
             updateUserSettings: async function() {
-                const docRef = doc(db, "users", this.uid);
+                const docRef = doc(db, "users", this.uidState);
                 
                 await updateDoc(docRef, {
                     "user_settings": this.userSettings
                 });
+
+                this.$store.dispatch('fetchUserSettings')
             },
         },
     };
