@@ -2,7 +2,8 @@
   <div class="about">
     <h1>abouts</h1>
     <h1>Location</h1>
-    <Location></Location>
+    <GetCurrentLocation></GetCurrentLocation>
+    <SelectLocation></SelectLocation>
     <h1>Firebase Authentication</h1>
     <h2>Sign in with Google</h2>
     <SignInWithGoogle></SignInWithGoogle>
@@ -16,7 +17,8 @@
   import SignInWithGoogle from "../components/SignInWithGoogle.vue";
   import SignOut from "../components/SignOut.vue";
   import Firestore from "../components/Firestore.vue";
-  import Location from "../components/Location.vue";
+  import SelectLocation from "../components/SelectLocation.vue";
+  import GetCurrentLocation from "../components/GetCurrentLocation.vue";
 
   export default {
     name: "about",
@@ -24,7 +26,8 @@
       SignInWithGoogle,
       SignOut,
       Firestore,
-      Location
+      SelectLocation,
+      GetCurrentLocation
     },
   };
 </script>
