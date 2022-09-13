@@ -20,6 +20,7 @@ import Firestore from "../components/Firestore.vue";
 
 import Clock from "@/components/Clock.vue";
 import Date from "@/components/Date.vue";
+import Weather from "@/components/Weather.vue";
 
 
 export default {
