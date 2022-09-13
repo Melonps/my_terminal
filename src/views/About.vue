@@ -10,6 +10,7 @@
     <Firestore></Firestore>
     <Clock></Clock>
     <Date></Date>
+    <Weather></Weather>
   </div>
 </template>
 
