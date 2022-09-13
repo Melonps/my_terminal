@@ -1,27 +1,33 @@
 <template>
+    <!--Terminal.vueで書くのでコメント
     <div>
         <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg"/>
         <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
-        <p>{{userSettingsState}}</p>
     </div>
-    <h2>Update JSON</h2>
-    <form>
-        <div class="mb-3">
-            <label for="inputUserName" class="form-label">User Name</label>
-            <input v-model="userSettings.username" v-bind:placeholder="userSettingsState.username" type="text" class="form-control" id="inputUserName">
-        </div>
-        <div class="mb-3">
-            <label for="inputUserLocation" class="form-label">Location</label>
-            <input v-model="userSettings.location" v-bind:placeholder="userSettingsState.location" type="text" class="form-control" id="inputUserLocation">
-        </div>
-        <div class="mb-3">
-            <label for="imputBgImage" class="form-label">Background Image</label>
-            <input v-model="userSettings.bg_image" v-bind:placeholder="userSettingsState.bg_image" type="url" class="form-control" id="imputBgImage">
-        </div>
-        <button type="button" class="btn btn-primary" v-on:click="updateUserSettings">
-            Update
+-->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Usersetting
         </button>
-    </form>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <div class="mb-3">
+                <label for="inputUserName" class="form-label">User Name</label>
+                <input v-model="userSettings.username" v-bind:placeholder="userSettingsState.username" type="text" class="form-control" id="inputUserName">
+            </div>
+            <div class="mb-3">
+                <label for="inputUserLocation" class="form-label">Location</label>
+                <input v-model="userSettings.location" v-bind:placeholder="userSettingsState.location" type="text" class="form-control" id="inputUserLocation">
+            </div>
+            <div class="mb-3">
+                <label for="imputBgImage" class="form-label">Background Image</label>
+                <input v-model="userSettings.bg_image" v-bind:placeholder="userSettingsState.bg_image" type="url" class="form-control" id="imputBgImage">
+            </div>
+            <button type="button" class="btn btn-primary" v-on:click="updateUserSettings">
+                Update
+            </button>
+        </ul>
+
+    </div>
 </template>
 
 <script>
