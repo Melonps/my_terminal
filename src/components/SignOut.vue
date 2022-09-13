@@ -12,6 +12,7 @@
         signOut(auth)
           .then(() => {
             // Sign-out successful.
+            this.$store.commit('clearAuth')
             console.log('サインアウト成功')
             alert('Succeeded to sign out')
           })

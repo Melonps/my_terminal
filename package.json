@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "bootstrap": "^5.2.0",
+    "browserify-fs": "^1.0.0",
     "core-js": "^3.6.5",
     "firebase": "^9.9.4",
     "vue": "^3.0.0",
