@@ -30,6 +30,7 @@ export default {
     Firestore,
     Clock,
     Date,
+    Weather,
   },
 };
 </script>
