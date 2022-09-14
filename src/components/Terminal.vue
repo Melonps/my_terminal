@@ -7,6 +7,10 @@
                 <UserSettings></UserSettings>
                 <Clock></Clock>
             </div>
+            <div v-if="!signedin_state">
+                <SignOut></SignOut>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -15,14 +19,16 @@
 
 import UserSettings from "../components/UserSettings.vue";
 import Clock from "../components/Clock.vue";
+import SignOut from "./SignOut.vue";
 
 
 export default {
     name: "terminal",
     components: {
-        UserSettings,
-        Clock,
-    },
+    UserSettings,
+    Clock,
+    SignOut
+},
     computed: {
         userSettingsState: function () {
             return this.$store.state.userSettings;
