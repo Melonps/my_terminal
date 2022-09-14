@@ -1,45 +1,20 @@
 <template>
-    <form class="form-inline" onsubmit="return false" >
-        <div class="form-group">
-            <input ref="input"
-            title="Google Search"
-            v-on:keyup.enter = "search(textInput)"
-            v-model = "textInput"
-            type="text"
-            class="form-control"
-            id="inputSearch"
-            aria-describedby="google-search"
-            placeholder="Google Search"
-            >
-            <button type="button" class="btn btn-primary" v-on:click="search(textInput)">
-                Search
-            </button>
-        </div>
-    </form>
+    <div class="gcse-search"></div>
 </template>
 
 <script>
 export default {
-    props: [
-        'site'
-    ],
-    data() {
-        return {
-            textInput: ''
-        }
+    mounted: () => {
+        /* 参考:
+            https://www.ultra-noob.com/blog/2020/54/
+            https://qiita.com/vent/items/0ce60beba453f4584a31
+        */
+        let gcseScriptElement = document.createElement('script')
+        gcseScriptElement.type = 'text/javascript'
+        gcseScriptElement.async = true
+        gcseScriptElement.src = 'https://cse.google.com/cse.js?cx=23d49ee9affc4407f'
+        let s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcseScriptElement, s);
     },
-    methods: {
-        search(str) {
-            if (str) {
-                window.open([
-                    'https://www.google.com/search?q=',
-                    this.site ? 'site:' + this.site + '+' : '',
-                    encodeURIComponent(str)
-                ].join(''));
-            } else {
-                this.$refs.input.focus();
-            }
-        }
-    }
 }
 </script>
