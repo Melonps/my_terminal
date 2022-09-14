@@ -1,5 +1,5 @@
 <template>
-    <form class="form-inline">
+    <form class="form-inline" onsubmit="return false" >
         <div class="form-group">
             <input ref="input"
             title="Google Search"
