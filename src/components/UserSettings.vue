@@ -1,13 +1,7 @@
 <template>
-    <!--Terminal.vueで書くのでコメント
-    <div>
-        <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg"/>
-        <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
-    </div>
--->
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-            Usersetting
+            User Settings
         </button>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
             <div class="mb-3">
@@ -26,7 +20,6 @@
                 Update
             </button>
         </ul>
-
     </div>
 </template>
 

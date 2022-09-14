@@ -4,7 +4,7 @@
             <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg"/>
             <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
             <div class="content">
-                <Usersettings></Usersettings>
+                <UserSettings></UserSettings>
                 <Clock></Clock>
             </div>
         </div>
@@ -13,16 +13,16 @@
 
 <script>
 
-import Usersettings from "../components/UserSettings.vue";
+import UserSettings from "../components/UserSettings.vue";
 import Clock from "../components/Clock.vue";
 
 
 export default {
     name: "terminal",
     components: {
-    Usersettings,
-    Clock,
-},
+        UserSettings,
+        Clock,
+    },
     computed: {
         userSettingsState: function () {
             return this.$store.state.userSettings;
