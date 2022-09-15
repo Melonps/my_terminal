@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <h1>abouts</h1>
+    <GoogleSearch></GoogleSearch>
     <h1>Firebase Authentication</h1>
 
     <div v-if="!signedin_state">
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import GoogleSearch from "@/components/GoogleSearch.vue";
 import SignInWithGoogle from "../components/SignInWithGoogle.vue";
 import SignOut from "../components/SignOut.vue";
 import Firestore from "../components/Firestore.vue";
@@ -32,6 +34,7 @@ import Date from "@/components/Date.vue";
 export default {
   name: "about",
   components: {
+    GoogleSearch,
     SignInWithGoogle,
     SignOut,
     Firestore,
