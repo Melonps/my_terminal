@@ -19,6 +19,7 @@
     <Firestore></Firestore>
     <Clock></Clock>
     <Date></Date>
+    <Maintext></Maintext>
   </div>
 </template>
 
@@ -28,8 +29,9 @@ import SignInWithGoogle from "../components/SignInWithGoogle.vue";
 import SignOut from "../components/SignOut.vue";
 import Firestore from "../components/Firestore.vue";
 import Usersetting from "../components/UserSettings.vue";
-import Clock from "@/components/Clock.vue";
-import Date from "@/components/Date.vue";
+import Clock from "../components/Clock.vue";
+import Date from "../components/Date.vue";
+import Maintext from "../components/Maintext.vue";
 
 export default {
   name: "about",
@@ -41,7 +43,8 @@ export default {
     Usersetting,
     Clock,
     Date,
-  },
+    Maintext
+},
   created() {
     this.$store.commit('onAuth')
   },

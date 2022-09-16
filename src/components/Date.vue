@@ -1,28 +1,32 @@
 <template>
-    <div id="date">
-        <Maintext :month="month" :day="day" :dayOfWeek="dayOfWeek"></Maintext>
-    </div>
+    <div id="date"></div>
 </template>
 
 <script>
-import Maintext from '../components/Maintext.vue';
-
 export default {
-    components: {
-        Maintext  
-    },
     data: function () {
         return {
             month: "January",
             day: "00",
-            dayOfWeek:"Sunday",
+            dayOfWeek: "Sunday",
         }
     },
     created() {
-        this.set_day();
+        this.set_date();
+    },
+    watch: {
+        month: function (month) {
+            this.$emit("send_month", month)
+        },
+        day: function (day) {
+            this.$emit("send_day", day)
+        },
+        dayOfWeek: function (dayOfWeek) {
+            this.$emit("send_dayOfWeek", dayOfWeek)
+        }
     },
     methods: {
-        set_day: function() {
+        set_date: function() {
             // dataオプションで定義したcuontにアクセス
             const date = new Date();  // Dateオブジェクトを作る
             const month = date.getMonth();
@@ -34,7 +38,7 @@ export default {
             this.month = months;
             this.dayOfWeek = dayOfWeek_Str;
         } 
-    }
+    },
 }
 </script>
 
