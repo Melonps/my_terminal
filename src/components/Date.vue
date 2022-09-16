@@ -1,13 +1,16 @@
 <template>
     <div id="date">
-        <p>{{month}}</p>
-        <p>{{ day }}</p>
-        <p>{{dayOfWeek}}</p>
+        <Maintext :month="month" :day="day" :dayOfWeek="dayOfWeek"></Maintext>
     </div>
 </template>
 
 <script>
+import Maintext from '../components/Maintext.vue';
+
 export default {
+    components: {
+        Maintext  
+    },
     data: function () {
         return {
             month: "January",
@@ -30,7 +33,6 @@ export default {
             this.day = day;  // 日付
             this.month = months;
             this.dayOfWeek = dayOfWeek_Str;
-
         } 
     }
 }
