@@ -54,8 +54,10 @@ export default {
         width: 100%;
         height: 100%;
     }
+
     .bg_blur {
         margin: 0;
+
     }
 
     .bg_blur img{
@@ -75,6 +77,27 @@ export default {
         right: 0;
         left: 0;
         margin: auto;
+    }
+
+    .bg_main::after {
+    /* 疑似要素で同じ大きさのboxを作り、position: absoluteで背面に表示 */
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* ①疑似要素のボックスを影色で塗りつぶし */
+        background-color: rgb(42, 159, 226);
+        /* ②ブラーフィルターでぼかす */
+        filter: blur(15px);
+        /* ③位置やサイズを調整 */
+        transform: translateY(10px) scale(1.05);
+        /* ④乗算で重ねる */
+        mix-blend-mode: hard-light;
     }
 
     .content{
