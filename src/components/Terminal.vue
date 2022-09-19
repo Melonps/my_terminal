@@ -10,8 +10,8 @@
             <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
             </div>
                 <div class="content">
+                    <Maintext></Maintext>
                     <UserSettings></UserSettings>
-                    <Clock></Clock>
                 <div v-if="!signedin_state">
                     <SignOut></SignOut>
                 </div>
@@ -24,16 +24,16 @@
 <script>
 
 import UserSettings from "../components/UserSettings.vue";
-import Clock from "../components/Clock.vue";
 import SignOut from "./SignOut.vue";
+import Maintext from "./Maintext.vue";
 
 
 export default {
     name: "terminal",
     components: {
     UserSettings,
-    Clock,
-    SignOut
+    SignOut,
+    Maintext
 },
     computed: {
         userSettingsState: function () {
