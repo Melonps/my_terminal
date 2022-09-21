@@ -3,9 +3,8 @@
 </template>
 
 <script>
-  import { getAuth, signOut } from "firebase/auth";
-
-  const auth = getAuth();
+  import { signOut } from "firebase/auth";
+  import { auth } from './../plugins/firebase'
 
   export default {
     methods: {
@@ -13,6 +12,7 @@
         signOut(auth)
           .then(() => {
             // Sign-out successful.
+            this.$store.commit('clearAuth')
             console.log('サインアウト成功')
             alert('Succeeded to sign out')
           })

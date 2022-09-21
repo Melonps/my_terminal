@@ -8,12 +8,11 @@
 </template>
 
 <script>
-  import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+  import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
   import { doc, getDoc, setDoc } from "firebase/firestore";
-  import { db } from './../plugins/firebase'
+  import { db, auth } from './../plugins/firebase'
 
   const provider = new GoogleAuthProvider();
-  const auth = getAuth();
 
   export default {
     data: () => ({

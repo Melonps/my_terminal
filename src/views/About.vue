@@ -10,17 +10,27 @@
     <SelectLocation></SelectLocation>
     <h2>Weather</h2>
     <Weather></Weather>
+    <GoogleSearch></GoogleSearch>
     <h1>Firebase Authentication</h1>
-    <h2>Sign in with Google</h2>
-    <SignInWithGoogle></SignInWithGoogle>
-    <h2>Sign out</h2>
-    <SignOut></SignOut>
+
+    <div v-if="!signedin_state">
+      <h2>Sign in with Google</h2>
+      <SignInWithGoogle></SignInWithGoogle>
+    </div>
+
+    <div v-if="signedin_state">
+      <h2>Sign out</h2>
+      <SignOut></SignOut>
+    </div>
+
     <h1>Firebase Firestore</h1>
+    <Usersetting></Usersetting>
     <Firestore></Firestore>
   </div>
 </template>
 
 <script>
+  import GoogleSearch from "@/components/GoogleSearch.vue";
   import SignInWithGoogle from "../components/SignInWithGoogle.vue";
   import SignOut from "../components/SignOut.vue";
   import Firestore from "../components/Firestore.vue";
@@ -33,6 +43,7 @@
   export default {
     name: "about",
     components: {
+      GoogleSearch,
       SignInWithGoogle,
       SignOut,
       Firestore,
@@ -42,5 +53,13 @@
       Date,
       Weather,
     },
+    created() {
+      this.$store.commit('onAuth')
+    },
+    computed: {
+      signedin_state() {
+        return this.$store.state.isSignedIn
+      },
+    }
   };
 </script>
