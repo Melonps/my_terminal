@@ -10,7 +10,6 @@
 
 <script>
 import weather_code_list from '../assets/weather_code.json'
-let url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json";
 
 export default {
     data: function () {
@@ -65,6 +64,7 @@ export default {
                 "鹿児島県": "460000",
                 "沖縄県": "471000", 
             },
+            url: "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json",
             weather_code: "100",
             weather_img: "100.svg",
             temps_min: "0",
@@ -73,14 +73,15 @@ export default {
         }
     },
     created() {
+        this.test(),
         this.weather_api()
     },
     methods: {
-        receive_clock (clock) {
-            this.clock = clock
+        test: function () {
+            this.url = this.url.replace("130000", "140000")
         },
         weather_api: function () {
-            fetch(url) 
+            fetch(this.url) 
                 .then((response) =>{
                     return response.json();
                 })
