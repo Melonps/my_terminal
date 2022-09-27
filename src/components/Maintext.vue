@@ -4,14 +4,13 @@
     <Date v-on:send_day="receive_day"></Date>
     <Date v-on:send_dayOfWeek="receive_dayOfWeek"></Date>
     <div class="Box">
-        <!-- <img src = "@/assets/img/default.jpg"> -->
         <div class="Clock">{{ clock }}</div>
         <div class="Month">{{ month }}</div>
         <div class="Day">{{ day }}</div>
         <div class="DayOfWeek">{{ dayOfWeek }}</div>
-        <div class="Text">Actual Weather in Osaka<br/>is cloudy, and 20°<br/> 
+        <div class="Text">Actual Weather in {{ location }}<br/>is cloudy, and 20°<br/> 
         with humidity 74% and wind speed 2m/s<br/>
-        Good morning, username<br/>
+        Good morning, {{ username }}<br/>
         I hope you slept well<br/>
         </div>
     </div>
@@ -20,6 +19,7 @@
 <script>
 import Clock from '../components/Clock.vue';
 import Date from '../components/Date.vue';
+import store from '../store';
 
 export default {
     data: function () {
@@ -28,7 +28,12 @@ export default {
             month: "January",
             day: "00",
             dayOfWeek: "Sunday",
+            username: "Username",
+            location: "Osaka",
         }
+    },
+    created() {
+        this.get_user()
     },
     components: {
         Clock,
@@ -46,6 +51,10 @@ export default {
         },
         receive_dayOfWeek (dayOfWeek) {
             this.dayOfWeek = dayOfWeek;
+        },
+        get_user: function () {
+            this.username = store.getters.get_username;
+            this.location = store.getters.get_location;
         }
     }
 }
