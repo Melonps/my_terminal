@@ -1,7 +1,9 @@
 <template>
     <div id="weather">
-        <p>{{area_code[String(this.location)]}}</p>
+        <!-- <p>{{area_code[String(this.location)]}}</p> -->
         <img :src="require(`@/assets/weather_img/${weather_img}`)"/>
+        <p>最低気温：{{ temps_min }}℃</p>
+        <p>最高気温：{{ temps_max }}℃</p>
         <p>error: {{error_message}}</p>
     </div>
 </template>
@@ -66,6 +68,8 @@ export default {
             },
             weather_code: "100",
             weather_img: "100.svg",
+            temps_min: "0",
+            temps_max: "0",
             error_message: "No error has found.",
         }
     },
@@ -73,14 +77,19 @@ export default {
         this.weather_api()
     },
     methods: {
+        receive_clock (clock) {
+            this.clock = clock
+        },
         weather_api: function () {
             fetch(url) 
                 .then((response) =>{
                     return response.json();
                 })
                 .then((weather) => {
-                    this.weather_code = weather[0].timeSeries[0].areas[0].weatherCodes[0];
-                    this.weather_img = weather_code_list[String(this.weather_code)][1]
+                    this.weather_code = weather[0].timeSeries[0].areas[0].weatherCodes[1];
+                    this.weather_img = weather_code_list[String(this.weather_code)][0]
+                    this.temps_min = weather[0].timeSeries[2].areas[0].temps[0]
+                    this.temps_max = weather[0].timeSeries[2].areas[0].temps[1]
                 })
                 .catch((error) => {
                     console.log(error)
