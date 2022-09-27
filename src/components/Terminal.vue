@@ -70,9 +70,8 @@ export default {
         position: inherit;
         filter: blur(8px);
         overflow: hidden;
-        width: 100%;
         height: 100vh;
-
+        width: 100%;
     }
 
     .bg_main {
@@ -86,6 +85,9 @@ export default {
         margin: auto;
     }
 
+    .bg_main img {
+        border-radius: 1rem;
+    }
     .bg_main::after {
     /* 疑似要素で同じ大きさのboxを作り、position: absoluteで背面に表示 */
         content: '';
