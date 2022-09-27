@@ -53,6 +53,7 @@ export default {
 
 <style>
     .Clock{
+        user-select: none;
         position: absolute;
         top: -22rem;
         left: 2em;
@@ -61,6 +62,7 @@ export default {
         color: #F2F1DF;;
     }
     .Day{
+        user-select: none;
         position: absolute;
         top: -0.89em;
         left: 14.5rem;
@@ -75,6 +77,7 @@ export default {
         color: #F2D399;
     }
     .Month{
+        user-select: none;
         z-index: 1;
         position: absolute;
         top: -0.5em;
@@ -86,6 +89,7 @@ export default {
         color: #F2F1DF;
     }
     .DayOfWeek{
+        user-select: none;
         position: absolute;
         top: 0.5em;
         left: 8rem;
@@ -96,6 +100,7 @@ export default {
         color: #F2F1DF;
     }
     .Text{
+        user-select: none;
         position: absolute;
         top: 3rem;
         left: 19rem;
