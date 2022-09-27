@@ -13,7 +13,6 @@ import weather_code_list from '../assets/weather_code.json'
 let url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json";
 
 export default {
-    props: ["location"],
     data: function () {
         return {
             // 参照：https://zenn.dev/inoue2002/articles/2e07da8d0ca9ca

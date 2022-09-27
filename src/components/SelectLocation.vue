@@ -6,16 +6,11 @@
       <option v-for="item in prefs" v-bind:key="item.id">{{item.name}}</option>
     </select>
     <p>選択された都道府県: {{selected_location}}</p>
-    <Weather :location="selected_location"></Weather>
   </div>
 </template>
 
 <script>
-  import Weather from './Weather.vue';
   export default {
-    components: {
-      Weather
-    },
     data() {
       return {
         prefs: [
