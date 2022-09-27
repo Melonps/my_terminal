@@ -32,7 +32,7 @@
             userSettings: {
                 username: '',
                 location: '',
-                bg_image: '',
+                bg_image: 'default',
             },
         }),
 

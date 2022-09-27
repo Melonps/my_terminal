@@ -9,7 +9,11 @@
         <div class="Month">{{ month }}</div>
         <div class="Day">{{ day }}</div>
         <div class="DayOfWeek">{{ dayOfWeek }}</div>
-        <div class="Text">{{ text }}</div>
+        <div class="Text">Actual Weather in Osaka<br/>is cloudy, and 20°<br/> 
+        with humidity 74% and wind speed 2m/s<br/>
+        Good morning, username<br/>
+        I hope you slept well<br/>
+        </div>
     </div>
 </template>
 
@@ -24,7 +28,6 @@ export default {
             month: "January",
             day: "00",
             dayOfWeek: "Sunday",
-            text: "test message",
         }
     },
     components: {
@@ -51,51 +54,54 @@ export default {
 <style>
     .Clock{
         position: absolute;
-        top: -5em;
+        top: -22rem;
         left: 2em;
         font-size: 5em;
-        font-family: "Meiryo UI", "Hiragino Sans", "Yu Gothic UI", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-family: "BEBAS_reg";
         color: #F2F1DF;;
     }
     .Day{
         position: absolute;
-        top: -1em;
-        left: 0.5em;
-        font-size: 25em;
-        letter-spacing: 0em;
-        opacity: 0.8;
+        top: -0.89em;
+        left: 14.5rem;
+        font-size: 24rem;
+        letter-spacing: -0.005em;
+        text-align: center;
         /* 参考：https://marie-web.design/blog/text-gradation/ */
-        background: linear-gradient(180deg, #F2D399 50%, rgba(217, 217, 217, 0) 100%);
+        background: linear-gradient(180deg, #F2D399 40%, rgba(217, 217, 217, 0) 100%);
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-family: "Meiryo UI", "Hiragino Sans", "Yu Gothic UI", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-family: "BEBAS_reg";
         color: #F2D399;
     }
     .Month{
         z-index: 1;
         position: absolute;
         top: -0.5em;
-        left: 5em;
-        font-size: 4em;
-        font-family: "Meiryo UI", "Hiragino Sans", "Yu Gothic UI", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
-        color: #F2F1DF;;
+        left: 19rem;
+        text-align: center;
+        font-size: 2.5rem;
+        font-family: "BEBAS_bld";
+        letter-spacing: 0.225em;
+        color: #F2F1DF;
     }
     .DayOfWeek{
         position: absolute;
-        top: 1em;
-        left: 1.5em;
-        font-size: 4em;
+        top: 0.5em;
+        left: 8rem;
+        font-size: 2.5rem;
         transform: rotate(-90deg);
         letter-spacing: 20px;
-        font-family: "Meiryo UI", "Hiragino Sans", "Yu Gothic UI", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
-        color: #F2F1DF;;
+        font-family: "BEBAS_bld";
+        color: #F2F1DF;
     }
     .Text{
         position: absolute;
-        top: 700px;
-        left: 500px;
-        font-size: 40px;
-        font-family: "Meiryo UI", "Hiragino Sans", "Yu Gothic UI", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
-        color: #F2F1DF;;
+        top: 3rem;
+        left: 19rem;
+        font-size: 1.2rem;
+        text-align: left;
+        font-family: "Moon";
+        color:#F2F1DF;
     }
 </style>

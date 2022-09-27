@@ -12,8 +12,11 @@
                 <div class="content">
                     <Maintext></Maintext>
                     <UserSettings></UserSettings>
-                <div v-if="!signedin_state">
+                <div v-if="$store.state.isSignedIn">
                     <SignOut></SignOut>
+                </div>
+                <div v-else>
+                    <SignInWithGoogle></SignInWithGoogle>
                 </div>
             </div>
             
@@ -26,6 +29,7 @@
 import UserSettings from "../components/UserSettings.vue";
 import SignOut from "./SignOut.vue";
 import Maintext from "./Maintext.vue";
+import SignInWithGoogle from "./SignInWithGoogle.vue";
 
 
 export default {
@@ -33,7 +37,8 @@ export default {
     components: {
     UserSettings,
     SignOut,
-    Maintext
+    Maintext,
+    SignInWithGoogle,
 },
     computed: {
         userSettingsState: function () {
@@ -53,6 +58,7 @@ export default {
     .m-0 img {
         width: 100%;
         height: 100%;
+
     }
 
     .bg_blur {
@@ -65,6 +71,7 @@ export default {
         filter: blur(8px);
         overflow: hidden;
         width: 100%;
+        height: 100vh;
 
     }
 
