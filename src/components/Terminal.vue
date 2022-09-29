@@ -10,6 +10,7 @@
             <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
             </div>
                 <div class="content">
+                    <GoogleSearch></GoogleSearch>
                     <Maintext></Maintext>
                     <UserSettings></UserSettings>
                 <div v-if="$store.state.isSignedIn">
@@ -30,7 +31,7 @@ import UserSettings from "../components/UserSettings.vue";
 import SignOut from "./SignOut.vue";
 import Maintext from "./Maintext.vue";
 import SignInWithGoogle from "./SignInWithGoogle.vue";
-
+import GoogleSearch from "./GoogleSearch.vue";
 
 export default {
     name: "terminal",
@@ -39,6 +40,7 @@ export default {
     SignOut,
     Maintext,
     SignInWithGoogle,
+    GoogleSearch,
 },
     computed: {
         userSettingsState: function () {

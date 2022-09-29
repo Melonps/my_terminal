@@ -37,7 +37,7 @@ export default {
     },
     components: {
         Clock,
-        Date
+        Date,
     },
     methods: {
         receive_clock (clock) {
