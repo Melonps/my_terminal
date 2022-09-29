@@ -81,7 +81,7 @@ export default {
             this.url = this.url.replace("130000", "140000")
         },
         weather_api: function () {
-            fetch(url) 
+            fetch(this.url) 
                 .then((response) =>{
                     return response.json();
                 })
@@ -97,5 +97,5 @@ export default {
                 });
         }
     }
-})
+}
 </script>
