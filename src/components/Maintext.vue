@@ -10,7 +10,7 @@
         <div class="DayOfWeek">{{ dayOfWeek }}</div>
         <div class="Text">Actual Weather in {{ location }}<br/>is cloudy, and 20°<br/> 
         with humidity 74% and wind speed 2m/s<br/>
-        Good morning, {{ username }}<br/>
+        Good morning, <span class="h_light">{{ username }}</span><br/>
         I hope you slept well<br/>
         </div>
     </div>
@@ -19,7 +19,6 @@
 <script>
 import Clock from '../components/Clock.vue';
 import Date from '../components/Date.vue';
-import store from '../store';
 
 export default {
     data: function () {
@@ -28,12 +27,15 @@ export default {
             month: "January",
             day: "00",
             dayOfWeek: "Sunday",
-            username: "Username",
-            location: "Osaka",
         }
     },
-    created() {
-        this.get_user()
+    computed: {
+        location: function(){
+            return this.$store.getters.get_location
+        },
+        username: function () {
+            return this.$store.getters.get_username
+        }
     },
     components: {
         Clock,
@@ -52,10 +54,7 @@ export default {
         receive_dayOfWeek (dayOfWeek) {
             this.dayOfWeek = dayOfWeek;
         },
-        get_user: function () {
-            this.username = store.getters.get_username;
-            this.location = store.getters.get_location;
-        }
+
     }
 }
 </script>
@@ -117,5 +116,8 @@ export default {
         text-align: left;
         font-family: "Moon";
         color:#F2F1DF;
+    }
+    .h_light {
+        color:#F2D399
     }
 </style>
