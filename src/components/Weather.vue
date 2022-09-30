@@ -72,6 +72,11 @@ export default {
             error_message: "No error has found.",
         }
     },
+    computed: {
+        location: function() {
+            return this.$store.getters.get_location
+        }
+    },
     created() {
         this.test(),
         this.weather_api()
