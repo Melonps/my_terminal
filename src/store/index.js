@@ -63,4 +63,12 @@ export default createStore({
             }
         },
     },
+    getters: {
+        get_username (state) {
+            return state.userSettings.username
+        },
+        get_location (state) {
+            return state.userSettings.location
+        }
+    }
 })

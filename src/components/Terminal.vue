@@ -10,10 +10,14 @@
             <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
             </div>
                 <div class="content">
+                    <GoogleSearch></GoogleSearch>
+                    <Maintext></Maintext>
                     <UserSettings></UserSettings>
-                    <Clock></Clock>
-                <div v-if="!signedin_state">
+                <div v-if="$store.state.isSignedIn">
                     <SignOut></SignOut>
+                </div>
+                <div v-else>
+                    <SignInWithGoogle></SignInWithGoogle>
                 </div>
             </div>
             
@@ -24,16 +28,19 @@
 <script>
 
 import UserSettings from "../components/UserSettings.vue";
-import Clock from "../components/Clock.vue";
 import SignOut from "./SignOut.vue";
-
+import Maintext from "./Maintext.vue";
+import SignInWithGoogle from "./SignInWithGoogle.vue";
+import GoogleSearch from "./GoogleSearch.vue";
 
 export default {
     name: "terminal",
     components: {
     UserSettings,
-    Clock,
-    SignOut
+    SignOut,
+    Maintext,
+    SignInWithGoogle,
+    GoogleSearch,
 },
     computed: {
         userSettingsState: function () {
@@ -53,6 +60,7 @@ export default {
     .m-0 img {
         width: 100%;
         height: 100%;
+
     }
 
     .bg_blur {
@@ -64,8 +72,8 @@ export default {
         position: inherit;
         filter: blur(8px);
         overflow: hidden;
+        height: 100vh;
         width: 100%;
-
     }
 
     .bg_main {
@@ -79,6 +87,9 @@ export default {
         margin: auto;
     }
 
+    .bg_main img {
+        border-radius: 1rem;
+    }
     .bg_main::after {
     /* 疑似要素で同じ大きさのboxを作り、position: absoluteで背面に表示 */
         content: '';

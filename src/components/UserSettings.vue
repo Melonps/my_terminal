@@ -37,7 +37,7 @@
             userSettings: {
                 username: '',
                 location: '',
-                bg_image: '',
+                bg_image: 'default',
             },
             prefs: [
                 { id: "1", name: "北海道" },
