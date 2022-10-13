@@ -13,6 +13,7 @@
                     <GoogleSearch></GoogleSearch>
                     <Maintext></Maintext>
                     <UserSettings></UserSettings>
+                    <ShortcutFolder></ShortcutFolder>
                 <div v-if="$store.state.isSignedIn">
                     <SignOut></SignOut>
                 </div>
@@ -32,6 +33,7 @@ import SignOut from "./SignOut.vue";
 import Maintext from "./Maintext.vue";
 import SignInWithGoogle from "./SignInWithGoogle.vue";
 import GoogleSearch from "./GoogleSearch.vue";
+import ShortcutFolder from "./ShortcutFolder.vue";
 
 export default {
     name: "terminal",
@@ -41,6 +43,7 @@ export default {
     Maintext,
     SignInWithGoogle,
     GoogleSearch,
+    ShortcutFolder,
 },
     computed: {
         userSettingsState: function () {
