@@ -49,9 +49,6 @@ export default createStore({
         addShortcut_vuex(state, obj) {
             state.userSettings.shortcut.push(obj)
         },
-        delete(state, id) {
-            state.userSetting.shortcut = state.userSettings.shortcut.filter(shortcut => shortcut.id !== id)
-        },
     },
     actions: {
         async fetchUserSettings (context) {

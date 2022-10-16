@@ -34,6 +34,7 @@
         <font-awesome-icon icon="fa-solid fa-house" />
     </button>
 
+    <!--ここから先はショートカット追加を押すと現れるモーダル-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -42,10 +43,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!--タイトル追加-->
                     <div class="input-group mb-3">
                         <input type="text" v-model="new_title" class="form-control" placeholder="title" aria-label="title"
                             aria-describedby="basic-addon2">
                     </div>
+                    <!--url追加-->
                     <div class="input-group mb-3">
                         <input type="text"  v-model="new_url" class="form-control" placeholder="url" aria-label="url" aria-describedby="basic-addon2">
                     </div>
@@ -84,10 +87,7 @@ export default {
         viewChange() {
             this.isShow = !this.isShow;
         },
-        remove(id) {
-            this.$store.commit('delete', id)
-            this.$router.push('/')
-        },
+        //マップオブジェクトとして、ショートカットの追加。ここまで動作チェック済み。
         addShortcut (new_title, new_url) {
             const obj = {};
             obj["title"] = new_title;
