@@ -10,7 +10,6 @@
             <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
             </div>
                 <div class="content">
-                    <GoogleSearch></GoogleSearch>
                     <Maintext></Maintext>
                     <UserSettings></UserSettings>
                 <div v-if="$store.state.isSignedIn">
@@ -26,33 +25,28 @@
 </template>
 
 <script>
+    import UserSettings from "../components/UserSettings.vue";
+    import SignOut from "./SignOut.vue";
+    import Maintext from "./Maintext.vue";
+    import SignInWithGoogle from "./SignInWithGoogle.vue";
 
-import UserSettings from "../components/UserSettings.vue";
-import SignOut from "./SignOut.vue";
-import Maintext from "./Maintext.vue";
-import SignInWithGoogle from "./SignInWithGoogle.vue";
-import GoogleSearch from "./GoogleSearch.vue";
-
-export default {
-    name: "terminal",
-    components: {
-    UserSettings,
-    SignOut,
-    Maintext,
-    SignInWithGoogle,
-    GoogleSearch,
-},
-    computed: {
-        userSettingsState: function () {
-            return this.$store.state.userSettings;
+    export default {
+        name: "terminal",
+        components: {
+            UserSettings,
+            SignOut,
+            Maintext,
+            SignInWithGoogle,
         },
-    }
-};
-
+        computed: {
+            userSettingsState: function () {
+                return this.$store.state.userSettings;
+            },
+        }
+    };
 </script>
 
 <style scoped>
-
     .m-0{
         position: relative;
     }
@@ -118,5 +112,4 @@ export default {
         left: 0;
         margin: auto;
     }
-
 </style>
