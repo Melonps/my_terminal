@@ -3,7 +3,7 @@
         
         <div v-show="isShow">
             <div class="d-flex flex-wrap" >
-                <div v-for="info of userSettingsState.shortcut" v-bind:key="info">
+                <div v-for="info of userSettingsState" v-bind:key="info">
                     <div class="p-2 bd-highlight">
                         <button type="button" class="btn btn-outline-light" @click="getCreateUrl(info.url)">
                             <img v-bind:src="`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${info.url}https://ameblo.jp/staff/&size=64`" alt="test" class="icon_shortcut"/>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" @click="addShortcut(new_title, new_url),updateUserSettings">Save changes</button>
+                    <button type="button" class="btn btn-primary" @click="addShortcut(new_title, new_url); updateUserSettings();">Save changes</button>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@ export default {
     },
     computed: {
         userSettingsState: function () {
-            return this.$store.state.userSettings;
+            return this.$store.state.shortcut;
         },
         get_shortcut_num: function () {
             return this.$store.state.get_num_shortcut;
@@ -92,19 +92,14 @@ export default {
             const obj = {};
             obj["title"] = new_title;
             obj["url"] = new_url;
-            const new_id = this.$store.getters.get_num_shortcut;
-            obj["id"] = new_id;
+            this.$store.state.shortcut.push(obj)
             console.log(obj);
-
         },
         updateUserSettings: async function () {
-            const docRef = doc(db, "users", this.uidState);
+            const docRef = doc(db, "users", this.$store.state.uid);
+            console.log(this.$store.state.uid)
+            await updateDoc(docRef, this.$store.state);
 
-            await updateDoc(docRef, {
-                "user_settings": this.userSettings
-            });
-
-            this.$store.dispatch('fetchUserSettings')
         },
     },
 

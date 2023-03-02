@@ -15,11 +15,21 @@ export default createStore({
             username: "Username",
             location: "Osaka",
             bg_image: "default",
-            shortcuts: [1],
         },
+        shortcut: [
+            {
+                title: 'youtube',
+                url: 'https://www.youtube.com/'
+            },
+            {
+                title: 'github',
+                url: 'https://github.co.jp/'
+            }
+        
+        ]
     },
     mutations: {
-        onAuth(state) {
+        onAuth (state) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     // User is signed in, see docs for a list of available properties
@@ -34,10 +44,10 @@ export default createStore({
                 }
             });
         },
-        updateUserSettings(state, userSettings) {
+        updateUserSettings (state, userSettings) {
             state.userSettings = userSettings
         },
-        clearAuth(state) {
+        clearAuth (state) {
             state.uid = ""
             state.isSignedIn = false
             state.userSettings = {
@@ -45,9 +55,6 @@ export default createStore({
                 location: "Osaka",
                 bg_image: "default",
             }
-        },
-        addShortcut_vuex(state, obj) {
-            state.userSettings.shortcut.push(obj)
         },
     },
     actions: {
@@ -73,10 +80,6 @@ export default createStore({
         },
         get_location (state) {
             return state.userSettings.location
-        },
-        get_num_shortcut (state) {
-            return state.userSettings.shortcut.length
-        },
-        
+        }
     }
 })
