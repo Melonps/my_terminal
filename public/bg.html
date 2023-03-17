@@ -1,0 +1,56 @@
+<html>
+
+    <head>
+        <style>
+            html,
+            body,
+            #image,
+            #gradient {
+                height: 100vh;
+                width: 100vw;
+            }
+
+            #image,
+            #gradient {
+                position: fixed;
+                top: 0;
+            }
+
+            body {
+                margin: 0;
+                opacity: 0;
+                transition: opacity 700ms;
+            }
+
+            body[shown] {
+                opacity: 1;
+            }
+
+            #image {
+                background-image: url(https://lh3.googleusercontent.com/proxy/vbHQiGmJEQ2CXTOq5nXNlohO-sIRke02BEi88ttQDrsaGEbDvrZd7OyKbM7bN2iHEJo_Rk4-ll_Kkj9yqsmVUYY8a4IXUBT3vmJYvQ=w3840-h2160-p-k-no-nd-mv);
+                background-position: center center;
+                background-repeat: no-repeat no-repeat;
+                background-size: cover;
+            }
+
+            #gradient {
+                background: radial-gradient(transparent 50%, black),
+                    linear-gradient(transparent, black);
+                display: inherit;
+                opacity: .2;
+            }
+        </style>
+    </head>
+
+    <body shown="">
+        <script src="background_image.js"></script>
+        <!-- The img tag purely exists to capture the load event. -->
+        <img src="https://lh3.googleusercontent.com/proxy/vbHQiGmJEQ2CXTOq5nXNlohO-sIRke02BEi88ttQDrsaGEbDvrZd7OyKbM7bN2iHEJo_Rk4-ll_Kkj9yqsmVUYY8a4IXUBT3vmJYvQ=w3840-h2160-p-k-no-nd-mv"
+            onload="onImageLoad()" hidden="">
+        <div id="image"></div>
+        <div id="gradient"></div>
+
+
+    </body>
+
+</html>

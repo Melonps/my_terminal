@@ -1,27 +1,18 @@
 <template>
-  <Header />
   <router-view />
-  <Footer />
 </template>
 
-<script>
-import Header from "@/components/Header.vue";
-
-export default {
-  components: {
-    Header,
-  },
-};
-</script>
 
 <style>
 #app {
   font-family: BEBAS, MOON, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,5 +36,9 @@ h1, h2, h3, h4, h5, h6 {
 
 img {
   image-rendering: -webkit-optimize-contrast;
+}
+
+.contents_box::-webkit-scrollbar{
+  display: none;
 }
 </style>

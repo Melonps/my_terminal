@@ -8,12 +8,12 @@
         <div class="Month">{{ month }}</div>
         <div class="Day">{{ day }}</div>
         <div class="DayOfWeek">{{ dayOfWeek }}</div>
-        <div class="Text">Actual Weather in {{ location }}<br/>is 
-        <img :src="require(`@/assets/weather_img/${weather_img}`)"/><br/>
-        , and low is {{ temps_min }}°, high is {{temps_max}}°<br/> 
+        <div class="Text">Actual Weather in {{ location }}<br/>is
+        <img :src="require(`@/assets/weather_img/${weather_img}`)" class="weather-icon"/>
+        and low is {{ temps_min }}°, high is {{temps_max}}°<br/> 
         <!-- with humidity 74% and wind speed 2m/s<br/> -->
         Good morning, <span class="h_light">{{ username }}</span><br/>
-        I hope you slept well<br/>
+        I hope you slept well.<br/>
         </div>
     </div>
 </template>
@@ -168,7 +168,7 @@ export default {
         top: -0.5em;
         left: 19rem;
         text-align: center;
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-family: "BEBAS_bld";
         letter-spacing: 0.225em;
         color: #F2F1DF;
@@ -187,6 +187,7 @@ export default {
     .Text{
         user-select: none;
         position: absolute;
+        width: 30%;
         top: 3rem;
         left: 19rem;
         font-size: 1.2rem;
@@ -196,5 +197,9 @@ export default {
     }
     .h_light {
         color:#F2D399
+    }
+    .weather-icon{
+        width: 20%;
+        fill: #F2F1DF;
     }
 </style>

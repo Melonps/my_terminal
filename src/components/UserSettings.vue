@@ -1,9 +1,10 @@
 <template>
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-            User Settings
-        </button>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <a class="btn btn-secondary dropup-toggle glass signin" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            <font-awesome-icon icon="fa-solid fa-gear" />
+            Setting
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark glass dropdown-menu-end menu" aria-labelledby="dropdownMenuButton2">
             <div class="mb-3">
                 <label for="inputUserName" class="form-label">User Name</label>
                 <input v-model="userSettings.username" v-bind:placeholder="userSettingsState.username" type="text" class="form-control" id="inputUserName">
@@ -21,8 +22,11 @@
             </div>
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary" v-on:click="updateUserSettings">
+                    <font-awesome-icon icon="fa-solid fa-chevron-up" />
                     Update
                 </button>
+                <SignOut></SignOut>
+                
             </div>
         </ul>
     </div>
@@ -31,8 +35,12 @@
 <script>
     import { doc, updateDoc } from "firebase/firestore";
     import { db } from "../plugins/firebase";
+    import SignOut from "./SignOut.vue";
 
-    export default {
+export default {
+        components: {
+            SignOut,
+        },
         data: () => ({
             userSettings: {
                 username: '',
@@ -120,3 +128,26 @@
         },
     };
 </script>
+
+<style scoped>
+    .glass {
+        background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
+        border: 1px solid rgba(255, 255, 255, 0.4); /* ボーダー */
+        border-right-color: rgba(255, 255, 255, 0.2);
+        border-bottom-color: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        -webkit-backdrop-filter: blur(20px); /* ぼかしエフェクト */
+        backdrop-filter: blur(20px);
+        box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5); /* 薄い影 */
+        }
+
+    .signin{
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .menu{
+        padding: 1rem;
+    }
+</style>

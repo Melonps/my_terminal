@@ -1,32 +1,56 @@
 <template>
-    <div class="whole">
-        <div class="m-0">
-            <div class="bg_blur">            
-            <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg_blur"/>
-            <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg_blur"/>
-            </div>
-            <div class="bg_main">
-            <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg"/>
-            <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
-            </div>
-                <div class="content">
-                    <Maintext></Maintext>
-                    <UserSettings></UserSettings>
-                <div v-if="$store.state.isSignedIn">
-                    <SignOut></SignOut>
-                </div>
-                <div v-else>
-                    <SignInWithGoogle></SignInWithGoogle>
-                </div>
-            </div>
-            
+
+    <div class="m-0 p-0">
+        
+        <div class="bg_blur">            
+            <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+            <div v-else class="backgroundImage" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` 
+            , 'background-size': `cover`
+        }"></div>
         </div>
+        <div class="glass"></div>
+
+        <div >
+            <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+            <div v-else class="backgroundImage bg_main" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` 
+            ,'background-color': `rgba(255,255,255,0.1)`
+            ,'background-blend-mode':`lighten`
+            ,'background-size':`cover`
+        }"></div>
+        <div >
+                <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+                <div v-else class="backgroundImage bg_overlay" :style="{
+                    'background': `url(${userSettingsState.bg_image}) no-repeat 50%`
+                    , 'background-color': `rgba(255,255,255,0.1)`
+                    , 'background-blend-mode': `lighten`
+                    , 'background-size': `cover`
+            }"></div>
+        </div>
+        </div>
+        <!--
+        <div >
+            <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+            <div v-else class="backgroundImage bg_overlay" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` }"></div>
+        </div>
+        -->
+
+        <div class="content">
+            <Maintext></Maintext>
+            <UserSettings></UserSettings>
+            <div v-if="$store.state.isSignedIn">
+                <SignOut></SignOut>
+            </div>
+            <div v-else>
+                <SignInWithGoogle></SignInWithGoogle>
+            </div>
+        </div>
+        
     </div>
+
 </template>
 
 <script>
     import UserSettings from "../components/UserSettings.vue";
-    import SignOut from "./SignOut.vue";
     import Maintext from "./Maintext.vue";
     import SignInWithGoogle from "./SignInWithGoogle.vue";
 
@@ -34,7 +58,6 @@
         name: "terminal",
         components: {
             UserSettings,
-            SignOut,
             Maintext,
             SignInWithGoogle,
         },
@@ -47,62 +70,17 @@
 </script>
 
 <style scoped>
-    .m-0{
-        position: relative;
-    }
-    /*背景画像の設定*/
-    .m-0 img {
-        width: 100%;
-        height: 100%;
 
-    }
+    /*背景画像の設定*/
 
     .bg_blur {
-        margin: 0;
-
-    }
-
-    .bg_blur img{
-        position: inherit;
-        filter: blur(8px);
-        overflow: hidden;
-        height: 100vh;
-        width: 100%;
-    }
-
-    .bg_main {
-        position: absolute;
-        width: 94%;
-        height: 94%;
-        top:0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        margin: auto;
-    }
-
-    .bg_main img {
-        border-radius: 1rem;
-    }
-    .bg_main::after {
-    /* 疑似要素で同じ大きさのboxを作り、position: absoluteで背面に表示 */
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        width: 100%;
+        position: fixed;
+        border: none;
         height: 100%;
-
-        /* ①疑似要素のボックスを影色で塗りつぶし */
-        background-color: rgb(42, 159, 226);
-        /* ②ブラーフィルターでぼかす */
-        filter: blur(15px);
-        /* ③位置やサイズを調整 */
-        transform: translateY(10px) scale(1.05);
-        /* ④乗算で重ねる */
-        mix-blend-mode: hard-light;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: -99;
     }
 
     .content{
@@ -111,5 +89,53 @@
         right: 0;
         left: 0;
         margin: auto;
+    }
+    .bg_main{
+        position: fixed;
+        width: 94vw;
+        inset: 0;
+        margin: auto;
+        border-radius: 30px;
+        
+    }
+    .bg_overlay{
+        position: fixed;
+        width: 94vw;
+        inset: 0;
+        margin: auto;
+        border-radius: 30px;
+        mix-blend-mode: overlay;
+    }
+
+    .backgroundImage {
+        background-size:cover;  
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        justify-content: center;
+        min-height: 100vh;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* 薄い影 */
+
+    }
+    .defalutImage{
+        background-size:cover;  
+        background: url('../assets/img/default.jpg') no-repeat 50%;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .glass {
+        width: 100vw;
+        height: 100vh;
+        z-index: -15;
+        background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
+        border: 1px solid rgba(255, 255, 255, 0.4); /* ボーダー */
+        border-right-color: rgba(255, 255, 255, 0.2);
+        border-bottom-color: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        -webkit-backdrop-filter: blur(16px); /* ぼかしエフェクト */
+        backdrop-filter: blur(16px);
+        box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5); /* 薄い影 */
+        
     }
 </style>

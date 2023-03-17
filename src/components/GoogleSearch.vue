@@ -1,5 +1,5 @@
 <template>
-    <div class="gcse-search"></div>
+    <div class="gcse-search glass"></div>
 </template>
 
 <script>
@@ -18,3 +18,4 @@ export default {
     },
 }
 </script>
+

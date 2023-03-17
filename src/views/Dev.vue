@@ -1,11 +1,9 @@
 <template>
-    <div class="box_area">
-        <div class="GoogleSearch">
-            <GoogleSearch></GoogleSearch>
-        </div>
-        <div class="dev">
-            <Terminal></Terminal>
-        </div>
+    <div class="GoogleSearch">
+        <GoogleSearch></GoogleSearch>
+    </div>
+    <div class="dev">
+        <Terminal></Terminal>
     </div>
 </template>
 
