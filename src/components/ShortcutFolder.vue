@@ -3,28 +3,27 @@
         
         <div v-show="isShow">
             <div class="d-flex flex-wrap" >
-                <div v-for="info of userSettingsState" v-bind:key="info">
-                    <div class="p-2 bd-highlight">
-                        <button type="button" class="btn btn-outline-light" @click="getCreateUrl(info.url)">
+                <div v-for="(info, idx) in userSettingsState" v-bind:key="info">
+                    <div class="icon-group">
+                        <button type="button" class="btn btn-outline-light icon" @click="getCreateUrl(info.url)">
                             <img v-bind:src="`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${info.url}https://ameblo.jp/staff/&size=64`" alt="test" class="icon_shortcut"/>
                             <div class=" text-truncate">
                                 <p>{{info.title}}</p>
                             </div>
                         </button>
                         <div class="btn-group dropend">
-                            <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                            <a class="edit-button dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <font-awesome-icon icon="fa-solid fa-bars" />
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" onclick="remove(info.id)">delete</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><button class="dropdown-item" @click="remove(info, idx)">delete</button></li>
                             </ul>
                         </div>
                         
                     </div>
                 </div>
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-dark icon" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <font-awesome-icon icon="fa-solid fa-plus" />
                 </button>
             </div>
@@ -54,8 +53,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" @click="addShortcut(new_title, new_url); updateUserSettings();">Save changes</button>
+                    <button type="button" class="btn btn-secondary" >Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="addShortcut(new_title, new_url);">Save changes</button>
                 </div>
             </div>
         </div>
@@ -63,8 +62,6 @@
 </template>
 
 <script>
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../plugins/firebase";
 
 export default {
     data() {
@@ -82,7 +79,7 @@ export default {
     },
     methods: {
         getCreateUrl(url) {
-            window.open(`${url}`)
+            window.open(`${url}`);
         },
         viewChange() {
             this.isShow = !this.isShow;
@@ -94,13 +91,19 @@ export default {
             obj["url"] = new_url;
             this.$store.state.shortcut.push(obj)
             console.log(obj);
-        },
-        updateUserSettings: async function () {
-            const docRef = doc(db, "users", this.$store.state.uid);
-            console.log(this.$store.state.uid)
-            await updateDoc(docRef, this.$store.state);
+            this.$store.commit('update');
+            new_title = "";
+            new_url = "";
 
         },
+        remove(id, idx) {
+            console.log(id);
+            console.log(idx);
+            id = null;
+            this.$store.state.shortcut.splice(idx, 1);
+            this.$store.commit('update');
+        },
+        
     },
 
 };
@@ -126,8 +129,8 @@ export default {
 
 .btn-group {
     position: relative;
-    right: 2rem;
-    top: 2rem;
+    right: 1.5rem;
+    top: 1.5rem;
 }
 
 .btn-outline-primary {
@@ -137,7 +140,7 @@ export default {
 /*ショートカット表示、非表示切り替え*/
 .btn-outline-light{
     font-size: 0.8rem;
-    width: 5rem;
+    
 }
 
 .btn-outline-info{
@@ -145,4 +148,22 @@ export default {
     right: 0;
     bottom: 0;
 }
+
+
+.icon{
+    width: 5rem;
+    background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* ボーダー */
+    border-right-color: rgba(255, 255, 255, 0.2);
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    -webkit-backdrop-filter: blur(10px); /* ぼかしエフェクト */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5);
+}
+
+.icon-group{
+
+}
+
 </style>
