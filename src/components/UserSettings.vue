@@ -130,8 +130,8 @@ export default {
 
 <style scoped>
     .glass {
-        background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
-        border: 1px solid rgba(255, 255, 255, 0.4); /* ボーダー */
+        background-color: rgba(71, 71, 71, 0.1); /* 背景色 */
+        border: 2px solid rgba(255, 255, 255, 0.4); /* ボーダー */
         border-right-color: rgba(255, 255, 255, 0.2);
         border-bottom-color: rgba(255, 255, 255, 0.2);
         border-radius: 15px;
@@ -146,7 +146,6 @@ export default {
         font-weight: 600;
         top: 1rem;
         right: 3vw;
-        letter-spacing: 0.06em;
         transform-origin:100% 0%;
     }
 

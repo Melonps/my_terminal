@@ -3,7 +3,7 @@
     <div class="m-0 p-0">
         
         <div class="bg_blur">            
-            <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+            <div v-if="userSettingsState.bg_image == 'default'" class="backgroundImage defalutImage"></div>
             <div v-else class="backgroundImage" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` 
             , 'background-size': `cover`
         }"></div>
@@ -11,14 +11,14 @@
         <div class="glass"></div>
 
         <div >
-            <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+            <div v-if="userSettingsState.bg_image == 'default'" class="backgroundImage defalutImage bg_main"></div>
             <div v-else class="backgroundImage bg_main" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` 
             ,'background-color': `rgba(255,255,255,0.1)`
             ,'background-blend-mode':`lighten`
             ,'background-size':`cover`
         }"></div>
         <div >
-                <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+                <div v-if="userSettingsState.bg_image == 'default'" class="backgroundImage defalutImage bg_overlay"></div>
                 <div v-else class="backgroundImage bg_overlay" :style="{
                     'background': `url(${userSettingsState.bg_image}) no-repeat 50%`
                     , 'background-color': `rgba(255,255,255,0.1)`
