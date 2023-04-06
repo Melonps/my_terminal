@@ -150,12 +150,12 @@ export default {
         user-select: none;
         position: absolute;
         top: -0.89em;
-        left: 14.5rem;
+        left: 18.5rem;
         font-size: 24rem;
         letter-spacing: -0.005em;
         text-align: center;
         /* 参考：https://marie-web.design/blog/text-gradation/ */
-        background: linear-gradient(180deg, #F2D399 40%, rgba(217, 217, 217, 0) 100%);
+        background: linear-gradient(180deg, #F2D399 30%, rgba(217, 217, 217, 0) 100%);
         background-clip: text;
         -webkit-text-fill-color: transparent;
         font-family: "BEBAS_reg";
@@ -170,17 +170,17 @@ export default {
         text-align: center;
         font-size: 3rem;
         font-family: "BEBAS_bld";
-        letter-spacing: 0.225em;
+        letter-spacing: 0.6rem;
         color: #F2F1DF;
     }
     .DayOfWeek{
         user-select: none;
         position: absolute;
-        top: 0.5em;
-        left: 8rem;
+        top: 1em;
+        left: 11rem;
         font-size: 2.5rem;
         transform: rotate(-90deg);
-        letter-spacing: 20px;
+        letter-spacing: 1rem;
         font-family: "BEBAS_bld";
         color: #F2F1DF;
     }
@@ -192,14 +192,13 @@ export default {
         left: 19rem;
         font-size: 1.2rem;
         text-align: left;
-        font-family: "Moon";
+        font-family: "Montserrat";
         color:#F2F1DF;
     }
     .h_light {
         color:#F2D399
     }
     .weather-icon{
-        width: 20%;
-        fill: #F2F1DF;
+        width: 4rem;
     }
 </style>

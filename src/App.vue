@@ -4,8 +4,10 @@
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 #app {
-  font-family: BEBAS, MOON, Arial, sans-serif;
+  font-family: BEBAS, Montserrat, MOON, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: none;
@@ -33,6 +35,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family:'MOON';
   src:url('./assets/fonts/Moon2.0-Regular.otf');
 }
+
+
 
 img {
   image-rendering: -webkit-optimize-contrast;

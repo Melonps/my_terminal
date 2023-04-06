@@ -2,7 +2,6 @@
     <div class="dropdown">
         <a class="btn btn-secondary dropup-toggle glass signin" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
             <font-awesome-icon icon="fa-solid fa-gear" />
-            Setting
         </a>
         <ul class="dropdown-menu dropdown-menu-dark glass dropdown-menu-end menu" aria-labelledby="dropdownMenuButton2">
             <div class="mb-3">
@@ -139,12 +138,16 @@ export default {
         -webkit-backdrop-filter: blur(20px); /* ぼかしエフェクト */
         backdrop-filter: blur(20px);
         box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5); /* 薄い影 */
-        }
-
-    .signin{
+        
+    }
+        
+    a.signin{
         position: fixed;
+        font-weight: 600;
         top: 1rem;
-        right: 1rem;
+        right: 3vw;
+        letter-spacing: 0.06em;
+        transform-origin:100% 0%;
     }
 
     .menu{
