@@ -6,18 +6,18 @@
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
             <div class="mb-3">
                 <label for="inputUserName" class="form-label">User Name</label>
-                <input v-model="userSettings.username" v-bind:placeholder="userSettingsState.username" type="text" class="form-control" id="inputUserName">
+                <input v-model="userSettingsData.username" v-bind:placeholder="userSettingsState.username" type="text" class="form-control" id="inputUserName">
             </div>
             <div class="mb-3">
                 <label for="selectLocation" class="form-label">Location</label>
-                <select id="selectLocation" class="form-select" aria-label="select location" v-model="userSettings.location">
+                <select id="selectLocation" class="form-select" aria-label="select location" v-model="userSettingsState.location">
                     <option disabled value="">都道府県を選択</option>
                     <option v-for="item in prefs" v-bind:key="item.id">{{item.name}}</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="imputBgImage" class="form-label">Background Image</label>
-                <input v-model="userSettings.bg_image" v-bind:placeholder="userSettingsState.bg_image" type="url" class="form-control" id="imputBgImage">
+                <input v-model="userSettingsData.bg_image" v-bind:placeholder="userSettingsState.bg_image" type="url" class="form-control" id="imputBgImage">
             </div>
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary" v-on:click="updateUserSettings">
@@ -34,7 +34,7 @@
 
     export default {
         data: () => ({
-            userSettings: {
+            userSettingsData: {
                 username: '',
                 location: '',
                 bg_image: 'default',
@@ -111,8 +111,18 @@
             updateUserSettings: async function() {
                 const docRef = doc(db, "users", this.uidState);
                 
+                if (this.userSettingsData.username == "") {
+                    this.userSettingsData.username = this.userSettingsState.username
+                }
+
+                this.userSettingsData.location = this.userSettingsState.location
+
+                if (this.userSettingsData.bg_image == "") {
+                    this.userSettingsData.bg_image = this.userSettingsState.bg_image
+                }
+
                 await updateDoc(docRef, {
-                    "user_settings": this.userSettings
+                    "user_settings": this.userSettingsData
                 });
 
                 this.$store.dispatch('fetchUserSettings')
