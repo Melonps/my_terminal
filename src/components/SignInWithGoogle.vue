@@ -9,8 +9,7 @@
 
 <script>
   import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-  import { doc, getDoc, setDoc } from "firebase/firestore";
-  import { db, auth } from './../plugins/firebase'
+  import { auth } from './../plugins/firebase'
 
   const provider = new GoogleAuthProvider();
 
@@ -53,16 +52,7 @@
       initDocument: async function () {
         //最初にgoogle関数の実行を待つ
         await this.google();
-        const docRef = doc(db, "users", this.uid);
-        //console.log("hoge",this.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          console.log("Document data:", docSnap.data());
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-          await setDoc(docRef, {});
-        }
+        this.$store.dispatch('fetchUserSettings')
       },
     }
   };
