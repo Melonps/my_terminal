@@ -34,7 +34,12 @@ export default {
             const day = date.getDate();
             const dayOfWeek = date.getDay();
             const dayOfWeek_Str = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ][dayOfWeek] ;
-            this.day = day;  // 日付
+            if (day > 10){
+                this.day = day.toString();
+            } else {
+                this.day = '0' + day.toString();
+            }
+             // 日付
             this.month = months;
             this.dayOfWeek = dayOfWeek_Str;
         } 

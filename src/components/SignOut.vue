@@ -1,5 +1,8 @@
 <template>
-  <button type="button" class="btn btn-primary" v-on:click="signOut">Sign out</button>
+  <a type="button" class="btn btn-dark" v-on:click="signOut">
+    <font-awesome-icon icon="fa-solid fa-right-from-bracket" />
+    Sign out
+  </a>
 </template>
 
 <script>
