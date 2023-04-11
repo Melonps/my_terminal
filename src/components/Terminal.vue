@@ -36,13 +36,7 @@
 
         <div class="content">
             <Maintext></Maintext>
-            <UserSettings></UserSettings>
-            <div v-if="$store.state.isSignedIn">
-                <SignOut></SignOut>
-            </div>
-            <div v-else>
-                <SignInWithGoogle></SignInWithGoogle>
-            </div>
+            <UserSettings/>
         </div>
         
     </div>
@@ -52,14 +46,12 @@
 <script>
     import UserSettings from "../components/UserSettings.vue";
     import Maintext from "./Maintext.vue";
-    import SignInWithGoogle from "./SignInWithGoogle.vue";
 
     export default {
         name: "terminal",
         components: {
             UserSettings,
             Maintext,
-            SignInWithGoogle,
         },
         computed: {
             userSettingsState: function () {
