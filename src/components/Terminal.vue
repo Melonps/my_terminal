@@ -1,4 +1,5 @@
 <template>
+
     <div class="whole">
         <div class="m-0">
             <div class="bg_blur">            
@@ -23,10 +24,26 @@
             </div>
             
         </div>
+        </div>
+        <!--
+        <div >
+            <div v-if="userSettingsState.bg_image == 'default'" class="defalutImage"></div>
+            <div v-else class="backgroundImage bg_overlay" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` }"></div>
+        </div>
+        -->
+
+        <div class="content">
+            <Maintext></Maintext>
+            <UserSettings/>
+        </div>
+        
     </div>
+
 </template>
 
 <script>
+    import UserSettings from "../components/UserSettings.vue";
+    import Maintext from "./Maintext.vue";
 
 import UserSettings from "../components/UserSettings.vue";
 import SignOut from "./SignOut.vue";
@@ -49,69 +66,26 @@ export default {
         userSettingsState: function () {
             return this.$store.state.userSettings;
         },
-    }
-};
-
+        computed: {
+            userSettingsState: function () {
+                return this.$store.state.userSettings;
+            },
+        }
+    };
 </script>
 
 <style scoped>
 
-    .m-0{
-        position: relative;
-    }
     /*背景画像の設定*/
-    .m-0 img {
-        width: 100%;
-        height: 100%;
-
-    }
 
     .bg_blur {
-        margin: 0;
-
-    }
-
-    .bg_blur img{
-        position: inherit;
-        filter: blur(8px);
-        overflow: hidden;
-        height: 100vh;
-        width: 100%;
-    }
-
-    .bg_main {
-        position: absolute;
-        width: 94%;
-        height: 94%;
-        top:0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        margin: auto;
-    }
-
-    .bg_main img {
-        border-radius: 1rem;
-    }
-    .bg_main::after {
-    /* 疑似要素で同じ大きさのboxを作り、position: absoluteで背面に表示 */
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        width: 100%;
+        position: fixed;
+        border: none;
         height: 100%;
-
-        /* ①疑似要素のボックスを影色で塗りつぶし */
-        background-color: rgb(42, 159, 226);
-        /* ②ブラーフィルターでぼかす */
-        filter: blur(15px);
-        /* ③位置やサイズを調整 */
-        transform: translateY(10px) scale(1.05);
-        /* ④乗算で重ねる */
-        mix-blend-mode: hard-light;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: -99;
     }
 
     .content{
@@ -121,5 +95,52 @@ export default {
         left: 0;
         margin: auto;
     }
+    .bg_main{
+        position: fixed;
+        width: 94vw;
+        inset: 0;
+        margin: auto;
+        border-radius: 30px;
+        
+    }
+    .bg_overlay{
+        position: fixed;
+        width: 94vw;
+        inset: 0;
+        margin: auto;
+        border-radius: 30px;
+        mix-blend-mode: overlay;
+    }
 
+    .backgroundImage {
+        background-size:cover;  
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        justify-content: center;
+        min-height: 100vh;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* 薄い影 */
+
+    }
+    .defalutImage{
+        background-size:cover;  
+        background: url('../assets/img/default.jpg') no-repeat 50%;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .glass {
+        width: 100vw;
+        height: 100vh;
+        z-index: -15;
+        background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
+        border: 1px solid rgba(255, 255, 255, 0.4); /* ボーダー */
+        border-right-color: rgba(255, 255, 255, 0.2);
+        border-bottom-color: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        -webkit-backdrop-filter: blur(16px); /* ぼかしエフェクト */
+        backdrop-filter: blur(16px);
+        box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5); /* 薄い影 */
+        
+    }
 </style>

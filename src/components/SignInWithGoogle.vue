@@ -1,16 +1,10 @@
 <template>
-  <button type="submit" class="btn btn-primary" v-on:click="initDocument">
-    <span><font-awesome-icon icon="fa-brands fa-google" /></span>
-    Sign in with Google
-  </button>
-
-  <p>{{uid}}</p>
+  <img src="../assets/google_signin_buttons/2x/btn_google_signin_light_normal_web@2x.png" class="google-signin" alt="google-signin" v-on:click="initDocument"/>
 </template>
 
 <script>
   import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-  import { doc, getDoc, setDoc } from "firebase/firestore";
-  import { db, auth } from './../plugins/firebase'
+  import { auth } from './../plugins/firebase'
 
   const provider = new GoogleAuthProvider();
 
@@ -63,7 +57,15 @@
           console.log("No such document!");
           await setDoc(docRef, this.$store.state );
         }
+
       },
     }
   };
 </script>
+
+<style scoped>
+  img.google-signin {
+    display: inline;
+    cursor: pointer;
+  }
+</style>
