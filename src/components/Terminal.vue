@@ -1,5 +1,4 @@
 <template>
-
     <div class="whole">
         <div class="m-0">
             <div class="bg_blur">            
@@ -22,8 +21,6 @@
                     <SignInWithGoogle></SignInWithGoogle>
                 </div>
             </div>
-            
-        </div>
         </div>
         <!--
         <div >
@@ -31,20 +28,14 @@
             <div v-else class="backgroundImage bg_overlay" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` }"></div>
         </div>
         -->
-
         <div class="content">
             <Maintext></Maintext>
             <UserSettings/>
         </div>
-        
     </div>
-
 </template>
 
 <script>
-    import UserSettings from "../components/UserSettings.vue";
-    import Maintext from "./Maintext.vue";
-
 import UserSettings from "../components/UserSettings.vue";
 import SignOut from "./SignOut.vue";
 import Maintext from "./Maintext.vue";
@@ -55,13 +46,13 @@ import ShortcutFolder from "./ShortcutFolder.vue";
 export default {
     name: "terminal",
     components: {
-    UserSettings,
-    SignOut,
-    Maintext,
-    SignInWithGoogle,
-    GoogleSearch,
-    ShortcutFolder,
-},
+        UserSettings,
+        SignOut,
+        Maintext,
+        SignInWithGoogle,
+        GoogleSearch,
+        ShortcutFolder,
+    },
     computed: {
         userSettingsState: function () {
             return this.$store.state.userSettings;
@@ -70,8 +61,10 @@ export default {
             userSettingsState: function () {
                 return this.$store.state.userSettings;
             },
-        }
-    };
+        },
+    },
+};
+
 </script>
 
 <style scoped>
