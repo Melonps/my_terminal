@@ -47,7 +47,17 @@
       initDocument: async function () {
         //最初にgoogle関数の実行を待つ
         await this.google();
-        this.$store.dispatch('fetchUserSettings')
+        const docRef = doc(db, "users", this.uid);
+        //console.log("hoge",this.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+          await setDoc(docRef, this.$store.state );
+        }
+
       },
     }
   };

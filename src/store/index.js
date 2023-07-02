@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 // Firebase/Auth
 import { onAuthStateChanged } from "firebase/auth";
 // Firebase/Firestore
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc,updateDoc } from "firebase/firestore";
 // Plugins/Firebase
 import { auth, db } from "../plugins/firebase";
 
@@ -16,6 +16,17 @@ export default createStore({
             location: "Osaka",
             bg_image: "default",
         },
+        shortcut: [
+            {
+                title: 'youtube',
+                url: 'https://www.youtube.com/'
+            },
+            {
+                title: 'github',
+                url: 'https://github.co.jp/'
+            }
+        
+        ]
     },
     mutations: {
         onAuth (state) {
@@ -35,6 +46,9 @@ export default createStore({
         updateUserSettings (state, userSettings) {
             state.userSettings = userSettings
         },
+        updateShortcut (state, shortcut) {
+            state.shortcut = shortcut
+        },
         clearAuth (state) {
             state.uid = ""
             state.isSignedIn = false
@@ -44,6 +58,12 @@ export default createStore({
                 bg_image: "default",
             }
         },
+        update: async function (state) {
+            const docRef = doc(db, "users", state.uid);
+            console.log(state.uid);
+            await updateDoc(docRef, state);
+
+        },
     },
     actions: {
         async fetchUserSettings (context) {
@@ -52,9 +72,9 @@ export default createStore({
             if (docSnap.exists()) {
                 console.log("Document data:", docSnap.data());
                 const data = docSnap.data();
-                if (data["user_settings"]) {
-                    context.commit('updateUserSettings', data["user_settings"])
-                }
+                console.log(data)
+                context.commit('updateUserSettings', data["userSettings"])
+                context.commit('updateShortcut', data["shortcut"])
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");

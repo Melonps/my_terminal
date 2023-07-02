@@ -1,31 +1,26 @@
 <template>
-
-    <div class="m-0 p-0">
-        
-        <div class="bg_blur">            
-            <div v-if="userSettingsState.bg_image == 'default'" class="backgroundImage defalutImage"></div>
-            <div v-else class="backgroundImage" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` 
-            , 'background-size': `cover`
-        }"></div>
-        </div>
-        <div class="glass"></div>
-
-        <div >
-            <div v-if="userSettingsState.bg_image == 'default'" class="backgroundImage defalutImage bg_main"></div>
-            <div v-else class="backgroundImage bg_main" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` 
-            ,'background-color': `rgba(255,255,255,0.1)`
-            ,'background-blend-mode':`lighten`
-            ,'background-size':`cover`
-        }"></div>
-        <div >
-                <div v-if="userSettingsState.bg_image == 'default'" class="backgroundImage defalutImage bg_overlay"></div>
-                <div v-else class="backgroundImage bg_overlay" :style="{
-                    'background': `url(${userSettingsState.bg_image}) no-repeat 50%`
-                    , 'background-color': `rgba(255,255,255,0.1)`
-                    , 'background-blend-mode': `lighten`
-                    , 'background-size': `cover`
-            }"></div>
-        </div>
+    <div class="whole">
+        <div class="m-0">
+            <div class="bg_blur">            
+            <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg_blur"/>
+            <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg_blur"/>
+            </div>
+            <div class="bg_main">
+            <img v-if="userSettingsState.bg_image != 'default'" :src="userSettingsState.bg_image" alt="Custom Background Image" class="custom_bg"/>
+            <img v-else src="@/assets/img/default.jpg" alt="Default Background Image" class="default_bg"/>
+            </div>
+                <div class="content">
+                    <GoogleSearch></GoogleSearch>
+                    <Maintext></Maintext>
+                    <UserSettings></UserSettings>
+                    <ShortcutFolder></ShortcutFolder>
+                <div v-if="$store.state.isSignedIn">
+                    <SignOut></SignOut>
+                </div>
+                <div v-else>
+                    <SignInWithGoogle></SignInWithGoogle>
+                </div>
+            </div>
         </div>
         <!--
         <div >
@@ -33,32 +28,43 @@
             <div v-else class="backgroundImage bg_overlay" :style="{ 'background': `url(${userSettingsState.bg_image}) no-repeat 50%` }"></div>
         </div>
         -->
-
         <div class="content">
             <Maintext></Maintext>
             <UserSettings/>
         </div>
-        
     </div>
-
 </template>
 
 <script>
-    import UserSettings from "../components/UserSettings.vue";
-    import Maintext from "./Maintext.vue";
+import UserSettings from "../components/UserSettings.vue";
+import SignOut from "./SignOut.vue";
+import Maintext from "./Maintext.vue";
+import SignInWithGoogle from "./SignInWithGoogle.vue";
+import GoogleSearch from "./GoogleSearch.vue";
+import ShortcutFolder from "./ShortcutFolder.vue";
 
-    export default {
-        name: "terminal",
-        components: {
-            UserSettings,
-            Maintext,
+export default {
+    name: "terminal",
+    components: {
+        UserSettings,
+        SignOut,
+        Maintext,
+        SignInWithGoogle,
+        GoogleSearch,
+        ShortcutFolder,
+    },
+    computed: {
+        userSettingsState: function () {
+            return this.$store.state.userSettings;
         },
         computed: {
             userSettingsState: function () {
                 return this.$store.state.userSettings;
             },
-        }
-    };
+        },
+    },
+};
+
 </script>
 
 <style scoped>
